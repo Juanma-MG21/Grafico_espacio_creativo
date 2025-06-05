@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Lobster&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        footer {
+            background: #222;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            margin-top: auto;
+            background: url('../static/img/mazo.JPG') no-repeat center center/cover;
+            box-shadow: 0px 10px 20px rgb(1, 158, 255);
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 20px;
+            width: 100%;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer-section h2 {
+            margin-bottom: 10px;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            padding: 10px;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-section {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <footer>
+        <br>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>Bienvenido</h2>
+                <p>Descubre nuestro contenido exclusivo y explora nuestras categorías.</p>
+            </div>
+            <div class="footer-section categories">
+                <h2>Categorías</h2>
+                <ul>
+                    <li><a href="#categoria1">Categoría 1</a></li>
+                    <li><a href="#categoria2">Categoría 2</a></li>
+                    <li><a href="#categoria3">Categoría 3</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h2>Contacto</h2>
+                <p>Email: contacto@gmail.com</p>
+                <p>Tel: +123 456 7890</p>
+            </div>
+        </div>
+    <br><br><br>
+        <div class="footer-bottom">
+            <p id="DC">&copy; 2025. Todos los derechos reservados.</p>
+        </div>
+        <br>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,219 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  background: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#loaderCanvas {
+  position: absolute;
+  z-index: 10;
+}
+
+.side-image {
+  position: absolute;
+  top: 50%;
+  width: 150px; /* ajusta el tamaño según necesites */
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 5s ease-out, transform 1s ease-out;
+  z-index: 15;
+}
+
+.side-image.left {
+  left: 5%;
+}
+
+.side-image.right {
+  right: 5%;
+}
+
+
+/* Círculo final con logo */
+.circle {
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  opacity: 0;
+  animation: fadeIn 15s ease-out forwards;
+  z-index: 20;
+}
+
+.creativo {
+  width: 230px;
+  height: auto;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 0.2s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* === Responsive === */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .side-image {
+    width: 100px;
+  }
+
+  .circle {
+    width: 320px;
+    height: 320px;
+    background-size: 200%;
+  }
+
+  .creativo {
+    width: 180px;
+  }
+}
+
+/* Móviles */
+@media (max-width: 600px) {
+  .side-image {
+    width: 80px;
+  }
+
+
+  #imgRight {
+    display: none !important; /* Oculta la imagen de la nutria */
+  }
+
+  #imgLeft {
+    position: absolute;
+    top: 14vh;
+    right: 0;
+    left: auto; /* Anula si estaba a la izquierda */
+    display: block !important; /* Asegura que se muestre */
+  }
+
+  .circle {
+    width: 250px;
+    height: 250px;
+    background-size: 180%;
+  }
+
+  .creativo {
+    width: 140px;
+  }
+
+  #loaderCanvas {
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------
+NAVBAR
+--------------------------------------------------------------------------------------------------------- */
+.menu-toggle {
+  position: relative;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 5s ease-out, transform 1s ease-out;
+  box-shadow: none;
+  transition: box-shadow 0.8s ease-in-out;
+  overflow: visible;
+}
+
+/* Pelota: circulo que rebota */
+.menu-toggle::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 4px;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(45deg, #00ffff, #7fffd4);
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ffff;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  z-index: 10;
+  opacity: var(--pelota-opacity, 1);
+}
+
+/* Rebotes con easing */
+.menu-toggle.bounce1::after {
+  animation: bounce1 0.8s forwards;
+}
+.menu-toggle.bounce2::after {
+  animation: bounce2 0.8s forwards;
+}
+.menu-toggle.bounce3::after {
+  animation: bounce3 0.8s forwards;
+}
+
+/* Animación final: pelota se desliza hacia abajo y desaparece */
+.menu-toggle.final-slide::after {
+  animation: slideDownFade 1s forwards;
+}
+
+/* Sombra línea: inicialmente invisible y sin altura */
+.menu-toggle::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  border-radius: 4px;
+  box-shadow:
+    0 0 10px 3px rgba(0, 255, 255, 0.8),
+    0 0 20px 6px rgba(0, 255, 255, 0.4),
+    0 0 30px 9px rgba(0, 255, 255, 0.2);
+  background: transparent;
+  opacity: 0;
+  transition: height 1s ease, opacity 1s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Cuando activamos la sombra línea, crece y aparece */
+.menu-toggle.sombra-activa::before {
+  height: 100%;
+  opacity: 1;
+}
+
+/* Keyframes rebotes */
+@keyframes bounce1 {
+  0% { top: 4px; animation-timing-function: ease-out; }
+  50% { top: 28px; animation-timing-function: ease-in; }
+  100% { top: 4px; }
+}
+
+@keyframes bounce2 {
+  0% { top: 4px; animation-timing-function: ease-out; }
+  50% { top: 20px; animation-timing-function: ease-in; }
+  100% { top: 4px; }
+}
+
+@keyframes bounce3 {
+  0% { top: 4px; animation-timing-function: ease-out; }
+  50% { top: 12px; animation-timing-function: ease-in; }
+  100% { top: 28px; } /* termina abajo */
+}
+
+@keyframes slideDownFade {
+  0% {
+    top: 28px;
+    opacity: 1;
+  }
+  100% {
+    top: 48px; /* baja más */
+    opacity: 0;
+  }
+}

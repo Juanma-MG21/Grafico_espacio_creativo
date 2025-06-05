@@ -1,0 +1,210 @@
+/* Contenedor formulario */
+.form-container {
+    max-width: 500px;
+    width: 90%;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+/* Texto y etiquetas */
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2c3e50;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Inputs y selects */
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Contenedor usuarios */
+.usuarios-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Mensajes flash */
+.flash-messages {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.flash-messages li {
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.flash-messages .success { background-color: #d4edda; color: #155724; }
+.flash-messages .danger  { background-color: #f8d7da; color: #721c24; }
+.flash-messages .warning { background-color: #fff3cd; color: #856404; }
+.flash-messages .info    { background-color: #cce5ff; color: #004085; }
+
+/* Lista usuarios: flex wrap para responsive */
+.usuarios-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Cards usuario */
+.usuario-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+.usuario-card p {
+    margin: 8px 0;
+    color: #333;
+}
+
+/* Acciones */
+.acciones {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.acciones a,
+.acciones button {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    justify-content: center;
+}
+
+.btn-editar {
+    background-color: rgb(237, 109, 12);
+    color: white;
+}
+
+.btn-editar:hover {
+    background-color: #d97105;
+}
+
+.btn-eliminar {
+    background-color: #b11b0a;
+    color: white;
+}
+
+.btn-eliminar:hover {
+    background-color: #8a1207;
+}
+
+/* --------- MEDIA QUERIES --------- */
+
+/* Tablets y móviles grandes */
+@media (max-width: 900px) {
+    .form-container {
+        max-width: 90%;
+        padding: 25px;
+        margin: 30px auto;
+    }
+
+    .usuarios-container {
+        padding: 15px;
+    }
+
+    .usuario-card {
+        max-width: 90%;
+        padding: 15px;
+    }
+}
+
+/* Móviles medianos */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 20px;
+        margin: 20px 10px;
+        width: 95%;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    button {
+        font-size: 15px;
+    }
+
+    .usuario-card {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .acciones {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .acciones a,
+    .acciones button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 400px) {
+    .form-container {
+        padding: 15px;
+        margin: 15px 5px;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+}

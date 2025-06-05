@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre mi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee+Tint&family=Cinzel:wght@400..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Londrina+Outline&family=Londrina+Shadow&family=Montagu+Slab:opsz,wght@16..144,100..700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Tagesschrift&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet"> -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/aboutme.css') }}">
+</head>
+<body>
+  {% include 'navbar.html' %}
+  <br><br><br>
+  <h1 id="title">SOBRE ESPACIO CREATIVO</h1>
+  <hr id="sep">
+    <section id="sobremi" class="about-section">
+        <div class="about-container">
+          <div class="about-image">
+            <img src="../static/IMG/yo.png" alt="Imagen sobre mí">
+          </div>
+          <div class="about-text">
+            <h2>JUAN PABLO MEDINA HENDE</h2>
+            <p>Estudios en diseño gráfico, Autónomo y creativo, buen desempeño en programas como corel draw y photoshop. En búsqueda de forjar y crear diseños tanto en Digital como en 3D. Buscando el mejor desempeño y determinación en cada pieza publicitaria y con esto demostrar una imagen corporativa dinámica y a través del arte dar la mejor expresión visual.</p>
+          </div>
+        </div>
+    </section>
+    
+    <section class="icon-section">
+      <div class="icon-network">
+        <!-- CORELDRAW -->
+        <div class="icon-box">
+          <img src="../static/IMG/icon_corel.png" alt="CorelDraw" />
+          <span class="tooltip">CorelDraw</span>
+        </div>
+    
+        <!-- PHOTOSHOP -->
+        <div class="icon-box">
+          <img src="../static/IMG/icon_photoshop.png" alt="Photoshop" />
+          <span class="tooltip">Photoshop</span>
+        </div>
+    
+        <!-- WORD -->
+        <div class="icon-box">
+          <img src="../static/IMG/icon_word.png" alt="Word" />
+          <span class="tooltip">Word</span>
+        </div>
+    
+        <!-- EXCEL -->
+        <div class="icon-box">
+          <img src="../static/IMG/icon_excel.png" alt="Excel" />
+          <span class="tooltip">Excel</span>
+        </div>
+      </div>
+    </section>
+    
+    <section class="collage-section">
+<!-- ----------------------------------------------------------------------------------------
+      PUBLICIDAD 
+---------------------------------------------------------------------------------------- -->
+      <div class="title">
+        <img src="../static/IMG/titulo_publicidad.png" alt="Título Aerografía">
+      </div>
+    
+      <section class="collage-container">
+        <img src="../static/IMG/publi_tkd.jpeg" alt="Publicidad 1" class="collage img1">
+        <img src="../static/IMG/publi_cuadros.png" alt="Publicidad 2" class="collage img2">
+        <img src="../static/IMG/publi_perezo.jpeg" alt="Publicidad 3" class="collage img3">
+        <img src="../static/IMG/publi_targ.jpg" alt="Publicidad 4" class="collage img4">
+        <img src="../static/IMG/publi_urban.jpeg" alt="Publicidad 5" class="collage img5">
+      </section>
+<!-- ----------------------------------------------------------------------------------------
+      ESCULTURA
+---------------------------------------------------------------------------------------- -->
+      <div class="title">
+        <img src="../static/IMG/titulo_escultura.png" alt="Título Aerografía">
+      </div>
+
+      <section class="collage-container">
+        <img src="../static/IMG/escult_buho.jpeg" alt="Escultura 1" class="collage img6">
+        <img src="../static/IMG/escult_cora.png" alt="Escultura 2" class="collage img7">
+        <img src="../static/IMG/escult_pochita.png" alt="Escultura 3" class="collage img8">
+        <img src="../static/IMG/escult_sapo.png" alt="Escultura 4" class="collage img9">
+        <img src="../static/IMG/escult_drago.png" alt="Escultura 5" class="collage img10">
+        <img src="../static/IMG/escult_dog.JPG" alt="Escultura 6" class="collage img11">
+        <img src="../static/IMG/escult_escor.JPG" alt="Escultura 7" class="collage img12">
+      </section>
+
+<!-- ----------------------------------------------------------------------------------------
+      AEROGRAFIA
+---------------------------------------------------------------------------------------- -->
+      <div class="title">
+        <img src="../static/IMG/titulo_AEROGRAFIA.png" alt="Título Aerografía">
+      </div>
+      
+      <section class="collage-container">
+        <img src="../static/IMG/aero_carr.jpg" alt="Aerografo 1" class="collage img13">
+        <img src="../static/IMG/aero_jupa.jpg" alt="Aerografo 2" class="collage img14">
+        <img src="../static/IMG/aero_kis.jpg" alt="Aerografo 3" class="collage img15">
+        <img src="../static/IMG/aero_ojo.JPG" alt="Aerografo 4" class="collage img16">
+        <img src="../static/IMG/aero_magos.JPG" alt="Aerografo 5" class="collage img17">
+      </section>
+
+<!-- ----------------------------------------------------------------------------------------
+      ARMAS
+---------------------------------------------------------------------------------------- -->
+      <div class="title">
+        <img src="../static/IMG/titulo_armas.png" alt="Título Aerografía">
+      </div>
+
+      <section class="collage-container">
+        <img src="../static/IMG/arma_acha.png" alt="Arma 1" class="collage img18">
+        <img src="../static/IMG/arma_kata.png" alt="Arma 2" class="collage img19">
+        <img src="../static/IMG/arma_marti.png" alt="Arma 3" class="collage img20">
+        <img src="../static/IMG/arma_mazo.png" alt="Arma 4" class="collage img21">
+        <img src="../static/IMG/shainch.jpeg" alt="Arma 5" class="collage img22">
+      </section>
+
+<!-- ----------------------------------------------------------------------------------------
+      STIKERS
+---------------------------------------------------------------------------------------- -->
+      <div class="title">
+        <img src="../static/IMG/titulo_stiker.png" alt="Título Aerografía">
+      </div>
+
+      <section class="collage-container">
+        <img src="../static/IMG/angel.jpeg" alt="Calca 1" class="collage img23">
+        <img src="../static/IMG/stich.jpeg" alt="Calca 2" class="collage img24">
+        <img src="../static/IMG/guns.jpeg" alt="Calca 3" class="collage img25">
+        <img src="../static/IMG/shinamonroi.jpeg" alt="Calca 4" class="collage img26">
+        <img src="../static/IMG/angel.jpeg" alt="Calca 5" class="collage img27">
+      </section>
+
+<!-- ----------------------------------------------------------------------------------------
+      METALMECANICA
+---------------------------------------------------------------------------------------- -->
+      <div class="title">
+        <img src="../static/IMG/titulo_arte en metal.png" alt="Título Aerografía">
+      </div>
+
+      <section class="collage-container">
+        <img src="../static/IMG/metal_cisne.png" alt="Metalmecanica 1" class="collage img28">
+        <img src="../static/IMG/metal_GI.png" alt="Metalmecanica 2" class="collage img29">
+        <img src="../static/IMG/metal_grillo.png" alt="Metalmecanica 3" class="collage img30">
+        <img src="../static/IMG/metal_mat.png" alt="Metalmecanica 4" class="collage img31">
+        <img src="../static/IMG/car.jpeg" alt="Metalmecanica 5" class="collage img32">
+      </section>
+
+    </section>
+
+         
+  {% include 'footer.html' %}
+</body>
+</html>

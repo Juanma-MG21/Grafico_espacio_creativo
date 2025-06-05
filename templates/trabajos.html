@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/categorias.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee+Tint&family=Londrina+Outline&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <section class="trabajos">
+        <!-- AEROGRAFIA -->
+        <div class="category" style="background-image: url('../static/IMG/fondo_aerografia.jpg');">
+            <div class="title">
+                <img src="../static/IMG/titulo_AEROGRAFIA.png" alt="Título Aerografía">
+            </div>
+            <div class="gallery-container">
+                {% for obra in obras %}
+                {% if obra.categoria == 3 %}
+                <div class="gallery-item"
+                    data-id="{{ obra.id }}"
+                    data-img="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}"
+                    data-title="{{ obra.titulo }}"
+                    data-description="{{ obra.descripcion }}"
+                    data-materials="{{ obra.materiales }}"
+                    data-measures="{{ obra.medidas_ancho }} x {{ obra.medidas_largo }} x {{ obra.medidas_alto }}"
+                    onclick="handleGalleryClick(this)">
+                    
+                    <img src="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}" alt="{{ obra.titulo }}">
+                    <div class="overlay">
+                        <p>{{ obra.titulo }}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- ESCULTURAS -->
+        <div class="category" style="background-image: url('../static/IMG/fondo_escultura.jpg');">
+            <div class="title">
+                <img src="../static/IMG/titulo_escultura.png" alt="Título Aerografía">
+            </div>
+            <div class="gallery-container">
+                {% for obra in obras %}
+                {% if obra.categoria == 6 %}
+                <div class="gallery-item"
+                    data-id="{{ obra.id }}"
+                    data-img="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}"
+                    data-title="{{ obra.titulo }}"
+                    data-description="{{ obra.descripcion }}"
+                    data-materials="{{ obra.materiales }}"
+                    data-measures="{{ obra.medidas_ancho }} x {{ obra.medidas_largo }} x {{ obra.medidas_alto }}"
+                    onclick="handleGalleryClick(this)">
+                    
+                    <img src="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}" alt="{{ obra.titulo }}">
+                    <div class="overlay">
+                        <p>{{ obra.titulo }}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- ARMAS -->
+        <div class="category" style="background-image: url('../static/IMG/fondo-armas.jpg');">
+            <div class="title">
+                <img src="../static/IMG/titulo_armas.png" alt="Título Aerografía">
+            </div>
+            <div class="gallery-container">
+                {% for obra in obras %}
+                {% if obra.categoria == 1 %}
+                <div class="gallery-item"
+                    data-id="{{ obra.id }}"
+                    data-img="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}"
+                    data-title="{{ obra.titulo }}"
+                    data-description="{{ obra.descripcion }}"
+                    data-materials="{{ obra.materiales }}"
+                    data-measures="{{ obra.medidas_ancho }} x {{ obra.medidas_largo }} x {{ obra.medidas_alto }}"
+                    onclick="handleGalleryClick(this)">
+                    
+                    <img src="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}" alt="{{ obra.titulo }}">
+                    <div class="overlay">
+                        <p>{{ obra.titulo }}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- STIKERS & IMANTADOS -->
+        <div class="category" style="background-image: url('../static/IMG/fondo_stiker01.jpg');">
+            <div class="title">
+                <img src="../static/IMG/titulo_stiker.png" alt="Título Aerografía">
+            </div>
+            <div class="gallery-container">
+                {% for obra in obras %}
+                {% if obra.categoria == 4 %}
+                <div class="gallery-item"
+                    data-id="{{ obra.id }}"
+                    data-img="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}"
+                    data-title="{{ obra.titulo }}"
+                    data-description="{{ obra.descripcion }}"
+                    data-materials="{{ obra.materiales }}"
+                    data-measures="{{ obra.medidas_ancho }} x {{ obra.medidas_largo }} x {{ obra.medidas_alto }}"
+                    onclick="handleGalleryClick(this)">
+                    
+                    <img src="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}" alt="{{ obra.titulo }}">
+                    <div class="overlay">
+                        <p>{{ obra.titulo }}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- METALMECANICA -->
+        <div class="category" style="background-image: url('../static/IMG/fondo_metal2.jpg');">
+            <div class="title">
+                <img src="../static/IMG/titulo_arte en metal.png" alt="Título Aerografía">
+            </div>
+            <div class="gallery-container">
+                {% for obra in obras %}
+                {% if obra.categoria == 5 %}
+                <div class="gallery-item"
+                    data-id="{{ obra.id }}"
+                    data-img="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}"
+                    data-title="{{ obra.titulo }}"
+                    data-description="{{ obra.descripcion }}"
+                    data-materials="{{ obra.materiales }}"
+                    data-measures="{{ obra.medidas_ancho }} x {{ obra.medidas_largo }} x {{ obra.medidas_alto }}"
+                    onclick="handleGalleryClick(this)">
+                    
+                    <img src="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}" alt="{{ obra.titulo }}">
+                    <div class="overlay">
+                        <p>{{ obra.titulo }}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- PUBLICIDAD -->
+        <div class="category" style="background-image: url('../static/IMG/fondo_publicidad.jpg');">
+            <div class="title">
+                <img src="../static/IMG/titulo_publicidad.png" alt="Título Aerografía">
+            </div>
+            <div class="gallery-container">
+                {% for obra in obras %}
+                {% if obra.categoria == 2 %}
+                <div class="gallery-item"
+                    data-id="{{ obra.id }}"
+                    data-img="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}"
+                    data-title="{{ obra.titulo }}"
+                    data-description="{{ obra.descripcion }}"
+                    data-materials="{{ obra.materiales }}"
+                    data-measures="{{ obra.medidas_ancho }} x {{ obra.medidas_largo }} x {{ obra.medidas_alto }}"
+                    onclick="handleGalleryClick(this)">
+                    
+                    <img src="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}" alt="{{ obra.titulo }}">
+                    <div class="overlay">
+                        <p>{{ obra.titulo }}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- MODAL PRINCIPAL -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+
+                <div class="modal-left">
+                    <span class="zoom-icon" onclick="openVisorModal()">🔍</span>
+                    <img id="modal-img" src="" alt="Obra Ampliada">
+                </div>
+
+                <div class="modal-right">
+                    <h2 id="modal-title"></h2>
+                    <p><span id="modal-description"></span></p> <!-- Sin <strong> en la descripción -->
+                    <p id="materials-wrapper"> <span id="modal-materials"></span></p>
+                    <p id="measures-wrapper"> <span id="modal-measures"></span></p>
+
+
+                    <div class="thumbnail-wrapper">
+                        <span class="arrow-thumb arrow-left-thumb" onclick="scrollThumbnails(-1)">&#10094;</span>
+                        <div class="thumbnail-container" id="thumbnails"></div>
+                        <span class="arrow-thumb arrow-right-thumb" onclick="scrollThumbnails(1)">&#10095;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- MODAL VISOR DE IMAGEN -->
+        <div id="modal-visor" class="modal-visor">
+            <span class="close-visor" onclick="closeVisorModal()">&times;</span>
+            <div class="modal-visor-content">
+                <span class="arrow arrow-left" onclick="prevImage()">&#10094;</span>
+                <img id="visor-img" src="" alt="Imagen ampliada">
+                <span class="arrow arrow-right" onclick="nextImage()">&#10095;</span>
+            </div>
+
+            <div class="zoom-controls">
+                <button onclick="zoomIn()">+</button>
+                <button onclick="zoomOut()">−</button>
+                <button onclick="resetZoomAndPan()">Reset</button>
+
+            </div>
+
+        </div>
+    </section>
+
+    <div class="hero-marca">@espaciocreativo</div>
+    <script>
+        document.addEventListener("scroll", function () {
+        let sections = document.querySelectorAll(".section, .hero-section, .hero-marca");
+        let scrollPosition = window.innerHeight * 0.8;
+        
+        sections.forEach(section => {
+            let positionFromTop = section.getBoundingClientRect().top;
+            if (positionFromTop < scrollPosition) {
+                section.classList.add("visible");
+            } else {
+                section.classList.remove("visible");
+            }
+        });
+    });
+
+    </script>
+
+    {% include 'footer.html' %}
+    <script src="{{ url_for('static', filename='JS/categorias.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Lobster&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .banner {
+            width: 100%;
+            height: 300px;
+            background: url('../static/IMG/LOGO.png') no-repeat center center/contain;
+            background-color: #cfcece;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1100;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar {
+            position: fixed;
+            left: -250px;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            padding-top: 60px;
+            transition: left 0.3s ease-in-out;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .navbar.active {
+            left: 0;
+        }
+
+        .menu {
+            list-style: none;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            background: url(../static/IMG/jupa.png) no-repeat center;
+            background-size: cover;
+        }
+
+        .menu li {
+            position: relative;
+            text-align: center;
+            padding: 10px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.2);
+            margin: 5px 0;
+        }
+
+        .submenu {
+            display: none;
+            position: fixed;
+            left: 250px;
+            top: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            width: 150px;
+            z-index: 1101;
+        }
+
+        .submenu li {
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .submenu .close-btn {
+            text-align: right;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 5px;
+        }
+
+        /* RESPONSIVE ADAPTATION */
+        @media (max-width: 768px) {
+            .banner {
+                height: 180px;
+                background-size: contain;
+            }
+
+            .menu-toggle {
+                font-size: 20px;
+                padding: 8px;
+            }
+
+            .navbar {
+                width: 80%;
+                left: -80%;
+            }
+
+            .navbar.active {
+                left: 0;
+            }
+
+            .menu li {
+                height: 50px;
+                padding: 8px;
+            }
+
+            .submenu {
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 90vw;
+                max-width: 300px;
+                padding: 15px;
+            }
+
+            .submenu ul {
+                padding: 0;
+            }
+
+            .submenu li {
+                font-size: 16px;
+                padding: 8px 10px;
+            }
+        }
+    </style>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.navbar').classList.toggle('active');
+        }
+
+        function toggleSubMenu() {
+            let submenu = document.querySelector('.submenu');
+            submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function closeSubMenu() {
+            document.querySelector('.submenu').style.display = 'none';
+        }
+
+        document.addEventListener('click', function(event) {
+            let submenu = document.querySelector('.submenu');
+            let trabajos = document.querySelector('.trabajos');
+            if (!trabajos.contains(event.target) && !submenu.contains(event.target)) {
+                submenu.style.display = 'none';
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="banner"></div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav class="navbar">
+        <ul class="menu">
+            <li style="background-image: url('../static/IMG/INICIO.png');" onclick="window.location.href='/'"></li>
+            
+            <li style="background-image: url('../static/IMG/TRABAJOS.png');" onclick="window.location.href='trabajos'"></li>
+
+            <li style="background-image: url('../static/IMG/SOBRE\ MI.png');" onclick="window.location.href='aboutme'"></li>
+ 
+            <li style="background-image: url('../static/IMG/CONTACTO.png');" onclick="window.location.href='contacto'"></li>
+
+
+                            <!-- PANEL DE CONTROL (ADMIN) -->
+            {% if session.get('logged_in') and session.get('rol') == 1 %}
+            <hr>
+            <li style="background-image: url('../static/IMG/galeria.png');" onclick="window.location.href='obras'"></li>
+
+            <li style="background-image: url('../static/IMG/usuario.png');" onclick="window.location.href='usuarios'"></li>
+
+            <li style="background-image: url('../static/IMG/agregar.png');" onclick="window.location.href='artic'"></li>
+
+            {% endif %}
+
+            <hr>
+            {% if not session.get('logged_in') %}
+
+            <li style="background-image: url('../static/IMG/INICIAR\ SE.png');" onclick="window.location.href='login'"></li>
+
+            <li style="background-image: url('../static/IMG/REGISTRARSE.png');" onclick="window.location.href='registrarse'"></li>
+
+            {% else %}
+
+            <li style="background-image: url('../static/IMG/CERRARSE.png');" onclick="window.location.href='logout'"></li>
+
+            {% endif %}
+
+        </ul>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Obra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/form.css') }}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="form-page">
+        <div class="container">
+            <h2>Agregar Nueva Obra</h2>
+
+            <form id="formulario" method="POST" action="{{ url_for('agregar_obra') }}" enctype="multipart/form-data">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required>
+
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+
+                <label for="materiales">Materiales:</label>
+                <input type="text" id="materiales" name="materiales">
+
+                <label>Dimensiones (cm):</label>
+                <div class="dimensions-row">
+                    <input type="number" id="medidas_largo" name="medidas_largo" step="0.01" placeholder="Largo" >
+                    <input type="number" id="medidas_ancho" name="medidas_ancho" step="0.01" placeholder="Ancho" >
+                    <input type="number" id="medidas_alto" name="medidas_alto" step="0.01" placeholder="Alto" >
+                </div>
+
+                <label for="imagen_principal">Imagen Principal:</label>
+                <input type="file" id="imagen_principal" name="imagen_principal" accept="image/*" required>
+
+                <label for="imagenes_secundarias">Imágenes Secundarias:</label>
+                <input type="file" id="imagenes_secundarias" name="imagenes_secundarias" accept="image/*" multiple>
+
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="" disabled selected>Seleccione una categoría</option>
+                    <option value="1">Armas</option>
+                    <option value="2">Publicidad</option>
+                    <option value="3">Aerografo</option>
+                    <option value="4">Imantados</option>
+                    <option value="5">Metalmecanica</option>
+                    <option value="6">Esculturas</option>
+                </select>
+
+                <input class="custom-btn" type="submit" value="Agregar Obra">
+            </form>
+
+            <br>
+            <a id="in" href="/">Volver a la Galería</a>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+
+    <script>
+        document.getElementById("formulario").addEventListener("submit", function(event) {
+            let imgPrincipal = document.getElementById("imagen_principal").files[0];
+            let imgsSecundarias = document.getElementById("imagenes_secundarias").files;
+
+            if (imgPrincipal && imgPrincipal.size > 5 * 1024 * 1024) { // 5MB límite
+                alert("La imagen principal es demasiado grande. Máximo 5MB.");
+                event.preventDefault();
+            }
+
+            for (let img of imgsSecundarias) {
+                if (img.size > 5 * 1024 * 1024) {
+                    alert("Una de las imágenes secundarias es demasiado grande. Máximo 5MB.");
+                    event.preventDefault();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

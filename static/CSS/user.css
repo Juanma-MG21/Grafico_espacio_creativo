@@ -1,0 +1,96 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0;
+}
+
+.form-container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 10vh auto 10vh auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 93%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.flash {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.success {
+    color: green;
+}
+
+.danger {
+    color: red;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* 📱 Responsive para celulares */
+@media (max-width: 480px) {
+    .form-container {
+        padding: 25px 20px;
+        margin-top: 30px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    button {
+        font-size: 15px;
+        width: 87%;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+}

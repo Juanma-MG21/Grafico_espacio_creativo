@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contáctenos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee+Tint&family=Londrina+Outline&family=Londrina+Shadow&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/contacto.css') }}">
+
+  <!-- FontAwesome para íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-papLFuC95Uezk2YzZl1eOyx5NUpXtFItRXgBDdn+1LbK+skMUDp7kn2wUULvHOIUNQqYxclBICZLZCJz1oU5mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Partículas -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+</head>
+<body>
+    {% include 'navbar.html' %}
+  <!-- Fondo dinámico con partículas -->
+  <div id="particles-js"></div>
+
+<!-- Contenedor principal -->
+<section class="contacto-container">
+    <div class="contacto-hero">
+      <div class="slider-wrapper">
+        <div class="slider-text">
+          <h1>CONTÁCTANOS</h1>
+          <h1> CONTÁCTANOS </h1>
+        </div>
+      </div>
+    </div>
+</section>
+  
+    <!-- ---------------------------------------------------------
+    Íconos conectados
+    --------------------------------------------------------- -->
+    <div class="icon-network">
+       <!-- INSTAGRAM -->
+        <div class="icon-box">
+          <a href="https://www.instagram.com/jupa197903?igsh=MWlpM2g0bXRlaTllOQ==" target="_blank">
+            <img src="../static/IMG/icon_ig.png" alt="Instagram" />
+          </a>
+        </div>
+      
+        <!-- GMAIL -->
+        <div class="icon-box">
+          <a href="https://mail.google.com/mail/?view=cm&to=espaciocreativo1979@gmail.com&su=Informacion%20pagina%20web&body=Escríbeme%20aquí" target="_blank">
+            <img src="../static/IMG/icon_gmail.png" alt="Gmail" />
+          </a>          
+        </div>
+        <!-- HOTMAIL -->
+        <div class="icon-box">
+          <a href="https://outlook.live.com/mail/0/deeplink/compose?to=arcadiacreativos@hotmail.com&subject=Informacion%20pagina%20web&body=Escríbeme%20aquí" target="_blank">
+            <img src="../static/IMG/icon_hotmail.png" alt="Hotmail" />
+          </a>
+        </div>
+        <!-- WHATSAPP     -->
+        <div class="icon-box">
+          <a href="https://wa.me/+573114964343?text=Hola%2C%20quiero%20comunicarme%20contigo" target="_blank">
+            <img src="../static/IMG/icon_whatsapp.png" alt="Whatsapp" />
+          </a>
+        </div>        
+    </div>
+      
+  </section>
+
+  <!-- Carga de partículas -->
+  <script>
+    particlesJS.load('particles-js', 'static/JSON/contacto.json', function () {
+      console.log('particles.js loaded - callback');
+    });
+  </script>
+{% include 'footer.html' %}
+</body>
+</html>

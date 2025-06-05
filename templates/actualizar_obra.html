@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar Obra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/reload.css') }}">
+</head>
+<body>
+
+    <h1>Actualizar Obra</h1>
+
+    <form action="{{ url_for('actualizar_obra', obra_id=obra.id) }}" method="POST" enctype="multipart/form-data">
+        <label for="titulo">Título:</label>
+        <input type="text" name="titulo" id="titulo" value="{{ obra.titulo }}" required>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea name="descripcion" id="descripcion" required>{{ obra.descripcion }}</textarea>
+
+        <label for="materiales">Materiales:</label>
+        <input type="text" name="materiales" id="materiales" value="{{ obra.materiales }}" required>
+
+        <label for="medidas_largo">Largo (cm):</label>
+        <input type="number" step="0.01" name="medidas_largo" id="medidas_largo" value="{{ obra.medidas_largo }}">
+
+        <label for="medidas_ancho">Ancho (cm):</label>
+        <input type="number" step="0.01" name="medidas_ancho" id="medidas_ancho" value="{{ obra.medidas_ancho }}">
+
+        <label for="medidas_alto">Alto (cm):</label>
+        <input type="number" step="0.01" name="medidas_alto" id="medidas_alto" value="{{ obra.medidas_alto }}">
+
+        <label>Imagen principal actual:</label>
+        <div class="preview-principal">
+            <img src="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}" alt="Imagen actual">
+        </div>
+
+        <label for="imagen_principal">Nueva imagen principal (opcional):</label>
+        <input type="file" name="imagen_principal" id="imagen_principal" accept="image/*">
+
+        <label>Imágenes secundarias actuales:</label>
+        <div class="imagenes-secundarias-container">
+            {% for imagen in imagenes_secundarias %}
+            <div class="imagen-secundaria" data-id="{{ imagen.id }}">
+                <img 
+                src="{{ url_for('static', filename='uploads/secundarias/' + imagen.imagen_url) }}" 
+                alt="Imagen secundaria"
+                >
+                <div class="marcar-eliminar">✖</div>
+            </div>
+            {% endfor %}
+        </div>
+        
+
+        <input type="hidden" name="eliminar_secundarias" id="imagenes_a_eliminar">
+
+
+        <label for="imagenes_secundarias">Agregar nuevas imágenes secundarias:</label>
+        <input type="file" name="nuevas_secundarias" id="imagenes_secundarias" multiple accept="image/*">
+
+
+        <button type="submit">Actualizar Obra</button>
+    </form>
+    <script src="{{ url_for('static', filename='JS/reload.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuarios</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/admin.css') }}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="usuarios-container">
+        <h2>Usuarios Registrados</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class="flash-messages">
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+
+        <div class="usuarios-lista">
+            {% for usuario in usuarios %}
+            <div class="usuario-card">
+                <p><strong>ID:</strong> {{ usuario.id }}</p>
+                <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+                <p><strong>Apellido:</strong> {{ usuario.apellido }}</p>
+                <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
+                <p><strong>Email:</strong> {{ usuario.email }}</p>
+                <p><strong>Rol:</strong> 
+                    {% if usuario.rol == 1 %}
+                        Administrador
+                    {% else %}
+                        Usuario
+                    {% endif %}
+                </p>
+                <div class="acciones">
+                    <a href="{{ url_for('actualizar_usuario', id=usuario.id) }}" class="btn-editar">Editar</a>
+                    <form action="{{ url_for('eliminar_usuario', id=usuario.id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');">
+                        <button type="submit" class="btn-eliminar">Eliminar</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>

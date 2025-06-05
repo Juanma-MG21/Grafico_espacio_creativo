@@ -1,0 +1,589 @@
+body {
+    background-color: #f9f9f9;
+}
+
+.about-section {
+    width: 100%;
+    padding: 80px 20px;
+}
+  
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 50px;
+    flex-wrap: wrap; 
+}
+  
+.about-image img {
+    max-width: 350px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.about-text {
+    flex: 1;
+    min-width: 280px;
+    max-width: 800px;
+    margin: 0 auto;     
+    padding: 20px 30px;  
+    text-align: justify;
+}
+
+.about-text h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  
+    font-family: "Cinzel", serif;
+    font-optical-sizing: auto;
+    font-weight: 600; 
+    font-style: normal;
+}
+  
+  
+.about-text p {
+    font-size: 1.5em;
+    line-height: 1.8;            
+    color: #2d2d2d;
+    margin-bottom: 20px; 
+    font-family: 'Libre Baskerville', serif;
+
+
+}
+  
+#title {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #222; 
+    letter-spacing: 2px;
+
+    font-family: "Cinzel", serif;
+    font-optical-sizing: auto;
+    font-weight: 600px;
+    font-style: normal;
+}
+  
+#sep {
+    max-width: 1100px;
+    width: 80%;
+    height: 4px;
+    background-color: rgb(237, 109, 12); 
+    border: none;
+    border-radius: 2px;
+    margin: 0 auto 40px auto; 
+}
+
+@media (max-width: 768px) {
+    #title {
+      font-size: 2em;
+    }
+  
+    #sep {
+        max-width: 90%;
+    }
+}
+  
+/* ---------------------------------------------------------------------------------------------------------
+ICONOS- skills set
+--------------------------------------------------------------------------------------------------------- */
+
+/* Sección con fondo azul oscuro difuminado */
+.icon-section {
+    background: linear-gradient(150deg, #0f2027, #203a43); /*2*/
+    /* background: linear-gradient(150deg, #000000, #434343); */
+
+    padding: 7vh;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Contenedor de iconos */
+  .icon-network {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    gap: 80px; /* más espacio entre íconos */
+    position: relative;
+  }
+  
+   
+  /* Icono individual */
+  .icon-box {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+    z-index: 1;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .icon-box:hover {
+    transform: scale(1.1);
+    border-color: rgb(237, 109, 12);
+  }
+  
+  /* Icono como imagen */
+  .icon-box img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  
+  .icon-box img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Tooltip oculto por defecto */
+  .icon-box .tooltip {
+    position: absolute;
+    bottom: -30px;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 6px 10px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    backdrop-filter: blur(4px);
+  }
+  
+  /* Mostrar tooltip al pasar el mouse */
+  .icon-box:hover .tooltip {
+    opacity: 1;
+    transform: translateY(5px);
+  }
+
+  @media (max-width: 768px) {
+    .icon-network {
+      gap: 6px; /* Reducimos el espacio entre iconos */
+      padding-bottom: 2vh; /* Un poco menos de espacio al fondo */
+    }
+  
+    .icon-box {
+      width: 90px; /* Iconos más pequeños */
+      height: 90px;
+    }
+  
+    .icon-box img {
+      width: 45px; /* Imagen interna también más pequeña */
+      height: 45px;
+    }
+  
+    .icon-box .tooltip {
+      font-size: 12px; /* Tooltip más pequeño */
+      bottom: -25px; /* Ajuste para que no tape tanto */
+      padding: 4px 8px;
+    }
+  
+    .icon-section {
+      padding: 40px 10px; /* Menos padding lateral */
+    }
+  }
+  
+  /* Extra para móviles MUY pequeños (opcional) */
+  @media (max-width: 480px) {
+    .icon-box {
+      width: 70px;
+      height: 70px;
+    }
+  
+    .icon-box img {
+      width: 35px;
+      height: 35px;
+    }
+  
+    .icon-box .tooltip {
+      font-size: 10px;
+      bottom: -20px;
+    }
+  }
+  
+/* ---------------------------------------------------------------------------------------------------------
+COLLAGE - CATEGORIAS
+--------------------------------------------------------------------------------------------------------- */
+
+.collage-section {
+    position: relative;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+  }
+
+/* Contenedor del collage */
+.collage-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 460px;
+    height: auto;
+
+  }
+  
+  /* Imágenes del collage */
+  .collage {
+    position: absolute;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    z-index: 1;
+  }
+  
+  /* Hover efecto */
+  .collage:hover {
+    transform: scale(1.05) rotate(2deg);
+  }
+  
+/* --------------------------------------------------------------------------------------
+PUBLICIDAD
+-------------------------------------------------------------------------------------- */
+  .img1 { width: 35vw; top: 13vh; left: 5vw; transform: rotate(4deg); }
+  .img2 { width: 36vw; top: 30vh; left: 35vw; transform: rotate(7deg); }
+  .img3 { width: 35vw; top: 115vh; left: 10vw; z-index: 2; }
+  .img4 { width: auto; height: 100vh; top: 15vh; left: 70vw; object-fit: contain; z-index: 1;}
+  .img5 { width: 40vw; top: 80vh; left: 42vw; transform: rotate(-5deg); }
+
+/* --------------------------------------------------------------------------------------
+  ESCULTURA
+-------------------------------------------------------------------------------------- */
+.img6 { width: 30vw; top: 5vh; left: 5vw; transform: rotate(2deg); }
+.img7 { width: 30vw; top: 10vh; left: 36vw; transform: rotate(-2deg); }
+.img8 { width: 22vw; top: 85vh; left: 34vw; transform: rotate(4deg); }
+.img9 { width: 32vw; top: 15vh; left: 65vw; transform: rotate(1deg); }
+.img10 { width: 24vw; top: 85vh; left: 57vw; transform: rotate(-3deg); z-index: 2;}
+.img11 { width: 25vw; top: 100vh; left: 7vw; transform: rotate(2deg); }
+.img12 { width: 19vw; top: 120vh; left: 75vw; transform: rotate(-2deg); z-index: 1;}
+
+/* --------------------------------------------------------------------------------------
+  AEROGRAFIA
+-------------------------------------------------------------------------------------- */
+.img13 { width: 60vw; top: 10vh; left: 5vw; transform: rotate(1.5deg); } 
+.img14 { width: 35vw; top: 10vh; left: 60vw; transform: rotate(-2deg); } 
+.img15 { width: 35vw; top: 110vh; left: 5vw; transform: rotate(2deg); } 
+.img16 { width: 30vw; top: 100vh; left: 36vw; transform: rotate(-1.5deg); } 
+.img17 { width: 30vw; top: 120vh; left: 66vw; transform: rotate(1deg); }
+
+/* --------------------------------------------------------------------------------------
+  ARMA
+-------------------------------------------------------------------------------------- */
+.img18 { width: 40vw; top: 16vh; left: 5vw; transform: rotate(2deg); }
+.img19 { width: 50vw; top: 4vh; left: 45vw; transform: rotate(-2deg); }
+.img20 { width: 28vw; top: 66vh; left: 15vw; transform: rotate(3deg); }
+.img21 { width: 40vw; top: 50vh; left: 57vw; transform: rotate(2.5deg); }
+.img22 { width: 45vw; top: 106vh; left: 45vw; transform: rotate(-2deg); }
+
+/* --------------------------------------------------------------------------------------
+    STIKER & IMAN
+-------------------------------------------------------------------------------------- */
+.img23 {
+  width: 30vw;
+  top: 6vh;
+  left: 6vw;
+  transform: rotate(-3deg);
+}
+
+.img24 {
+  width: 26vw;
+  top: 18vh;
+  left: 68vw;
+  transform: rotate(2deg);
+}
+
+.img25 {
+  width: 32vw;
+  top: 32vh;
+  left: 33vw;
+  transform: rotate(-2deg);
+}
+
+.img26 {
+  width: 28vw;
+  top: 92vh;
+  left: 12vw;
+  transform: rotate(1.5deg);
+}
+
+.img27 {
+  width: 28vw;
+  top: 90vh;
+  left: 63vw;
+  transform: rotate(-2.5deg);
+}
+
+
+/* --------------------------------------------------------------------------------------
+  METALMECANICA
+-------------------------------------------------------------------------------------- */
+.img28 { width: 35vw; top: 5vh; left: 5vw; transform: rotate(2deg); z-index: 1; }
+.img29 { width: 28vw; top: 5vh; left: 68vw; transform: rotate(-1.5deg); z-index: 4;}
+.img30 { width: 30vw; top: 94vh; left: 7vw; transform: rotate(-2deg); z-index: 5;}
+.img31 { width: 28vw; top: 100vh; left: 67vw; transform: rotate(2deg); }
+.img32 { width: 40vw; top: 70vh; left: 32vw; transform: rotate(0deg); z-index: 3;}
+
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.title img {
+  height: 75%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ==============================================================================
+  @MEDIAS 
+============================================================================== */
+
+@media (max-width: 768px) {
+  .collage-publi,
+  .collage {
+    position: static;
+    display: block;
+    margin: 20px auto;
+    transform: none !important;
+    width: 85vw !important;
+    height: auto !important;
+  }
+
+  .collage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-height: auto;
+  }
+
+  .collage-header h2 {
+    font-size: 32px;
+    height: 20vh;
+    padding-bottom: 5px;
+  }
+}
+/* ------------------------------------------------------------------------------ */
+/* Para pantallas medianas */
+@media (max-width: 1024px) {
+  .about-text h2 {
+    font-size: 2em;
+  }
+
+  .about-text p {
+    font-size: 1.2em;
+  }
+
+  .collage-header h2 {
+    font-size: 36px;
+  }
+
+  .title {
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .title img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-width: 100vw;
+  }
+}
+/* ------------------------------------------------------------------------------ */
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 60px 15px;
+  }
+
+  .about-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .about-image img {
+    max-width: 280px;
+  }
+
+  .about-text {
+    padding: 15px;
+  }
+
+  .icon-network {
+    gap: 30px;
+  }
+
+  .collage-container {
+    padding: 15px;
+  }
+
+  .collage-header h2 {
+    font-size: 28px;
+  }
+
+  .title {
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .title img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-width: 100vw;
+  }
+}
+/* ------------------------------------------------------------------------------ */
+/* Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .about-text h2 {
+    font-size: 1.5em;
+  }
+
+  .about-text p {
+    font-size: 1em;
+  }
+
+  .collage-header h2 {
+    font-size: 24px;
+    height: auto;
+    padding: 10px 0;
+  }
+
+  .title {
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .title img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-width: 100vw;
+  }
+}
+/* ------------------------------------------------------------------------------ */
+
+@media (min-width: 801px) {
+  .collage-container {
+    padding: 460px;
+    height: auto;
+  }
+
+  .collage {
+    position: absolute;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    z-index: 1;
+  }
+}
+
+/* ------------------------------------------------------------------------------ */
+@media (max-width: 800px) {
+  .collage-container {
+    position: relative;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    min-height: auto;
+  }
+
+  .collage {
+    position: static;
+    width: 90%;
+    max-width: 300px;
+    height: auto;
+    transform: none !important;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* ------------------------------------------------------------------------------
+MEDIAS - Imagenes
+------------------------------------------------------------------------------ */
+
+@media (min-height: 858px) {
+
+  /* --------------------------------------------------------------------------------------
+  PUBLICIDAD
+  -------------------------------------------------------------------------------------- */
+  .img1 { top: 5vh; left: 5vw; width: 35vw; }
+  .img2 { top: 8vh; left: 39vw; width: 36vw; z-index: 5; }
+  .img3 { top: 70vh; left: 10vw; width: 35vw; z-index: 2; }
+  .img4 { top: 22vh; left: 68vw; height: 72vh; width: auto; object-fit: contain; z-index: 3; }
+  .img5 { top: 48vh; left: 34vw; width: 40vw; }
+
+  /* --------------------------------------------------------------------------------------
+  ESCULTURA
+  -------------------------------------------------------------------------------------- */
+  .img6 { top: 4vh; left: 5vw; width: 30vw; }
+  .img7 { top: 8vh; left: 36vw; width: 30vw; }
+  .img8 { top: 68vh; left: 34vw; width: 22vw; }
+  .img9 { top: 12vh; left: 65vw; width: 32vw; }
+  .img10 { top: 58vh; left: 54vw; width: 24vw; z-index: 2; }
+  .img11 { top: 60vh; left: 7vw; width: 25vw; }
+  .img12 { top: 74vh; left: 75vw; width: 19vw; z-index: 1; }
+
+  /* --------------------------------------------------------------------------------------
+  AEROGRAFIA
+  -------------------------------------------------------------------------------------- */
+  .img13 { top: 8vh; left: 5vw; width: 60vw; }
+  .img14 { top: 8vh; left: 60vw; width: 35vw; }
+  .img15 { top: 60vh; left: 5vw; width: 35vw; }
+  .img16 { top: 55vh; left: 36vw; width: 30vw; }
+  .img17 { top: 67vh; left: 66vw; width: 30vw; }
+
+  /* --------------------------------------------------------------------------------------
+  ARMA
+  -------------------------------------------------------------------------------------- */
+  .img18 { top: 12vh; left: 5vw; width: 40vw; }
+  .img19 { top: 3vh; left: 45vw; width: 50vw; }
+  .img20 { top: 46vh; left: 15vw; width: 28vw; }
+  .img21 { top: 28vh; left: 57vw; width: 40vw; }
+  .img22 { top: 58vh; left: 45vw; width: 45vw; }
+
+  /* --------------------------------------------------------------------------------------
+  STIKER & IMAN
+  -------------------------------------------------------------------------------------- */
+  .img23 { top: 8vh; left: 10vw; width: 22vw; }
+  .img24 { top: 9.6vh; left: 38vw; width: 22vw; }
+  .img25 { top: 8vh; left: 66vw; width: 22vw; }
+  .img26 { top: 40vh; left: 24vw; width: 22vw; }
+  .img27 { top: 41.6vh; left: 52vw; width: 22vw; }
+
+  /* --------------------------------------------------------------------------------------
+  METALMECANICA
+  -------------------------------------------------------------------------------------- */
+  .img28 { top: 4vh; left: 5vw; width: 35vw; z-index: 1; }
+  .img29 { top: 4vh; left: 68vw; width: 28vw; z-index: 4; }
+  .img30 { top: 59vh; left: 7vw; width: 30vw; z-index: 5; }
+  .img31 { top: 58vh; left: 67vw; width: 28vw; }
+  .img32 { top: 36vh; left: 32vw; width: 40vw; z-index: 3; }
+
+}

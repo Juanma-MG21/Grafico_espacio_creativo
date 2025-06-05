@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Espacio Creativo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/index.css') }}">
+</head>
+<body>
+      {% include 'navbar.html' %}
+
+  <canvas id="loaderCanvas" width="300" height="300"></canvas>
+  <img src="{{ url_for('static', filename='img/astro.png') }}" alt="Decoración izquierda" class="side-image left" id="imgLeft" style="display: none;">
+  <img src="{{ url_for('static', filename='img/nutria.png') }}" alt="Decoración derecha" class="side-image right" id="imgRight" style="display: none;">
+
+  <div class="circle" id="finalCircle" style="display: none; background-image: url('../static/img/luna.jpeg'); background-position: center; background-size: 280%; background-repeat: no-repeat;">
+    <img src="{{ url_for('static', filename='img/grafico.png') }}" alt="Espacio Creativo" class="creativo">
+  </div>
+  <script src="{{ url_for('static', filename='JS/index.js') }}"></script>
+
+      <!-- {% include 'footer.html' %} -->
+</body>
+</html>

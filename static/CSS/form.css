@@ -1,0 +1,91 @@
+.form-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('../IMG/fruta.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #000;
+    padding: 4rem 1rem;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.form-page .container {
+    max-width: 700px;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 12px;
+    margin: auto;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.form-page h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #222;
+}
+
+.form-page form label {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    display: block;
+    color: #333;
+}
+
+.form-page form input,
+.form-page form textarea,
+.form-page form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.form-page form input:focus,
+.form-page form textarea:focus,
+.form-page form select:focus {
+    border-color: rgb(237, 109, 12);
+    outline: none;
+}
+
+/* Agrupar dimensiones en una fila */
+.dimensions-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.dimensions-row input {
+    flex: 1;
+}
+
+.form-page form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1614a3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-page form button:hover {
+    background-color: #fed508;
+}
+
+.form-page form button:active {
+    background-color: #fa0000;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .dimensions-row {
+        flex-direction: column;
+    }
+}

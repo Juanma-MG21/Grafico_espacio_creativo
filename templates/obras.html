@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería general - Obras</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/categorias.css') }}">
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+    <hr><br><br><br>
+    <h1>Obras</h1>
+
+    <div class="gallery-container">
+        {% for obra in obras %}
+        <div class="gallery-item"
+            data-id="{{ obra.id }}"
+            data-img="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}"
+            data-title="{{ obra.titulo }}"
+            data-description="{{ obra.descripcion }}"
+            data-materials="{{ obra.materiales }}"
+            data-measures="{{ obra.medidas_ancho }} x {{ obra.medidas_largo }} x {{ obra.medidas_alto }}"
+            onclick="handleGalleryClick(this)">
+            
+            <img src="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}" alt="{{ obra.titulo }}">
+            <div class="overlay">
+                <p>{{ obra.titulo }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+            <!-- MODAL PRINCIPAL -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+
+            <div class="modal-left">
+                <span class="zoom-icon" onclick="openVisorModal()">🔍</span>
+                <img id="modal-img" src="" alt="Obra Ampliada">
+            </div>
+
+            <div class="modal-right">
+                <h2 id="modal-title"></h2>
+                <p><span id="modal-description"></span></p> <!-- Sin <strong> en la descripción -->
+                <p id="materials-wrapper"> <span id="modal-materials"></span></p>
+                <p id="measures-wrapper"> <span id="modal-measures"></span></p>
+
+                <div class="modal-buttons">
+                    <a id="update-button" class="btn" href="#">Actualizar</a>
+
+                    <form id="delete-form" method="POST" action="" style="display:inline;">
+                        <button type="submit" class="btn" onclick="return confirm('¿Estás seguro de que quieres eliminar esta obra?')">Eliminar</button>
+                    </form>
+                </div>
+
+                <div class="thumbnail-wrapper">
+                    <span class="arrow-thumb arrow-left-thumb" onclick="scrollThumbnails(-1)">&#10094;</span>
+                    <div class="thumbnail-container" id="thumbnails"></div>
+                    <span class="arrow-thumb arrow-right-thumb" onclick="scrollThumbnails(1)">&#10095;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Segunda Modal (Visor de imagen ampliada con flechas) -->
+    <div id="modal-visor" class="modal-visor">
+        <span class="close-visor" onclick="closeVisorModal()">&times;</span>
+        <div class="modal-visor-content">
+            <span class="arrow arrow-left" onclick="prevImage()">&#10094;</span>
+            <img id="visor-img" src="" alt="Imagen ampliada">
+            <span class="arrow arrow-right" onclick="nextImage()">&#10095;</span>
+        </div>
+
+        <div class="zoom-controls">
+            <button onclick="zoomIn()">+</button>
+            <button onclick="zoomOut()">−</button>
+            <button onclick="resetZoomAndPan()">Reset</button>
+        </div>
+
+    </div>
+
+    <hr>
+    <script src="{{ url_for('static', filename='JS/categorias.js') }}"></script>
+    {% include 'footer.html' %}
+</body>
+</html>
