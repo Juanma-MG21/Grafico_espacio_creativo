@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería general - Obras</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/categorias.css') }}">
+    <link rel="shortcut icon" href="../static/IMG/grafico.png" type="image/x-icon">
 </head>
 <body>
 
@@ -22,7 +23,7 @@
             data-materials="{{ obra.materiales }}"
             data-measures="{{ obra.medidas_ancho }} x {{ obra.medidas_largo }} x {{ obra.medidas_alto }}"
             onclick="handleGalleryClick(this)">
-            
+
             <img src="{{ url_for('static', filename='uploads/' + obra.imagen_principal) }}" alt="{{ obra.titulo }}">
             <div class="overlay">
                 <p>{{ obra.titulo }}</p>
@@ -43,7 +44,7 @@
 
             <div class="modal-right">
                 <h2 id="modal-title"></h2>
-                <p><span id="modal-description"></span></p> <!-- Sin <strong> en la descripción -->
+                <p><span id="modal-description"></span></p>
                 <p id="materials-wrapper"> <span id="modal-materials"></span></p>
                 <p id="measures-wrapper"> <span id="modal-measures"></span></p>
 

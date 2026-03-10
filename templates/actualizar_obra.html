@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Actualizar Obra</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/reload.css') }}">
+    <link rel="shortcut icon" href="../static/IMG/grafico.png" type="image/x-icon">
 </head>
 <body>
 
@@ -17,7 +18,7 @@
         <textarea name="descripcion" id="descripcion" required>{{ obra.descripcion }}</textarea>
 
         <label for="materiales">Materiales:</label>
-        <input type="text" name="materiales" id="materiales" value="{{ obra.materiales }}" required>
+        <input type="text" name="materiales" id="materiales" value="{{ obra.materiales }}" >
 
         <label for="medidas_largo">Largo (cm):</label>
         <input type="number" step="0.01" name="medidas_largo" id="medidas_largo" value="{{ obra.medidas_largo }}">
@@ -40,15 +41,15 @@
         <div class="imagenes-secundarias-container">
             {% for imagen in imagenes_secundarias %}
             <div class="imagen-secundaria" data-id="{{ imagen.id }}">
-                <img 
-                src="{{ url_for('static', filename='uploads/secundarias/' + imagen.imagen_url) }}" 
+                <img
+                src="{{ url_for('static', filename='uploads/secundarias/' + imagen.imagen_url) }}"
                 alt="Imagen secundaria"
                 >
                 <div class="marcar-eliminar">✖</div>
             </div>
             {% endfor %}
         </div>
-        
+
 
         <input type="hidden" name="eliminar_secundarias" id="imagenes_a_eliminar">
 

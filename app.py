@@ -3,7 +3,18 @@ import mysql.connector
 from flask_session import Session
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
-import os 
+import os
+
+import cloudinary
+import cloudinary.uploader
+
+cloudinary.config(
+    cloud_name="TU_CLOUD_NAME",
+    api_key="TU_API_KEY",
+    api_secret="TU_API_SECRET",
+    secure=True
+)
+
 
 app = Flask (__name__)
 
@@ -11,12 +22,17 @@ app.secret_key = 'clave_secreta'
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
-UPLOAD_FOLDER = 'static/uploads'
-SECUNDARIAS_FOLDER = 'static/uploads/secundarias'
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+UPLOAD_FOLDER = os.path.join(basedir, 'static', 'uploads')
+SECUNDARIAS_FOLDER = os.path.join(UPLOAD_FOLDER, 'secundarias')
+
+
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SECUNDARIAS_FOLDER'] = SECUNDARIAS_FOLDER
+
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(SECUNDARIAS_FOLDER, exist_ok=True)
@@ -31,6 +47,8 @@ db_config = {
     'database': 'espaciocreativo'
 }
 
+
+
 # Función que usa ese diccionario
 def conectar_db():
     return mysql.connector.connect(**db_config)
@@ -44,6 +62,7 @@ def allowed_file(filename):
 
 def get_db_connection():
     return mysql.connector.connect(**db_config)
+
 
 
 # ----------------------------------------------------------------------
@@ -189,6 +208,9 @@ def eliminar_obra(obra_id):
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # = = = > ACTUALIZAR OBRAS < = = =
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+def convertir_a_float(valor):
+    return float(valor) if valor and valor.strip() else None
+
 @app.route('/actualizar/<int:obra_id>', methods=['GET', 'POST'])
 def actualizar_obra(obra_id):
     conexion = conectar_db()
@@ -199,14 +221,15 @@ def actualizar_obra(obra_id):
         titulo = request.form.get('titulo')
         descripcion = request.form.get('descripcion')
         materiales = request.form.get('materiales')
-        medidas_largo = request.form.get('medidas_largo')
-        medidas_ancho = request.form.get('medidas_ancho')
-        medidas_alto = request.form.get('medidas_alto')
+        medidas_largo = convertir_a_float(request.form.get('medidas_largo'))
+        medidas_ancho = convertir_a_float(request.form.get('medidas_ancho'))
+        medidas_alto = convertir_a_float(request.form.get('medidas_alto'))
+
 
         # 2. Actualizar datos básicos
         cursor.execute("""
-            UPDATE obras 
-            SET titulo = %s, descripcion = %s, materiales = %s, 
+            UPDATE obras
+            SET titulo = %s, descripcion = %s, materiales = %s,
                 medidas_largo = %s, medidas_ancho = %s, medidas_alto = %s
             WHERE id = %s
         """, (titulo, descripcion, materiales, medidas_largo, medidas_ancho, medidas_alto, obra_id))
@@ -336,7 +359,7 @@ def registrarse():
             return redirect(url_for('registrarse'))
 
         # Asignación automática de rol
-        if email == 'creativos@gmail.com':
+        if email == 'juanma1608g@gmail.com':
             rol = 1
         else:
             rol = 0
@@ -415,14 +438,14 @@ def actualizar_usuario(id):
             if contrasena:
                 hash_contra = generate_password_hash(contrasena)
                 cursor.execute("""
-                    UPDATE usuarios 
-                    SET nombre = %s, apellido = %s, telefono = %s, email = %s, contrasena = %s 
+                    UPDATE usuarios
+                    SET nombre = %s, apellido = %s, telefono = %s, email = %s, contrasena = %s
                     WHERE id = %s
                 """, (nombre, apellido, telefono, email, hash_contra, id))
             else:
                 cursor.execute("""
-                    UPDATE usuarios 
-                    SET nombre = %s, apellido = %s, telefono = %s, email = %s 
+                    UPDATE usuarios
+                    SET nombre = %s, apellido = %s, telefono = %s, email = %s
                     WHERE id = %s
                 """, (nombre, apellido, email, id))
 
@@ -437,7 +460,7 @@ def actualizar_usuario(id):
         cursor.close()
         conexion.close()
         return render_template('actualizar_usuario.html', usuario=usuario)
-    
+
     else:
         flash('No tienes permiso para acceder a esta página', 'danger')
         return redirect(url_for('index'))
@@ -494,7 +517,7 @@ def login():
                 return redirect(url_for('index'))
             else:
                 return "Credenciales incorrectas. Inténtalo de nuevo."
-        
+
         except mysql.connector.Error as err:
             flash(f'Error en el inicio de sesión: {err}', 'danger')
 
@@ -521,4 +544,4 @@ def logout():
 
 # ----------------------------------------------------------------------
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run(debug=True)

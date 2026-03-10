@@ -1,18 +1,4 @@
--- Crear base de datos
-CREATE DATABASE IF NOT EXISTS espaciocreativo;
-
--- Crear usuario si no existe
-CREATE USER IF NOT EXISTS 'arcadia'@'localhost' IDENTIFIED BY 'password';
-
--- Conceder privilegios al usuario sobre la base de datos
-GRANT ALL PRIVILEGES ON espaciocreativo.* TO 'arcadia'@'localhost';
-
--- Aplicar cambios
-FLUSH PRIVILEGES;
-
--- Usar la base de datos
-USE espaciocreativo;
-
+USE `Espaciocreativo$Arcadia`;
 
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -23,7 +9,6 @@ CREATE TABLE IF NOT EXISTS usuarios (
     contrasena VARCHAR(200),
     rol TINYINT NOT NULL
 );
-
 
 CREATE TABLE IF NOT EXISTS obras (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -37,11 +22,9 @@ CREATE TABLE IF NOT EXISTS obras (
     categoria TINYINT NOT NULL
 );
 
-
 CREATE TABLE IF NOT EXISTS imagenes_obras (
     id INT AUTO_INCREMENT PRIMARY KEY,
     obra_id INT NOT NULL,
     imagen_url VARCHAR(255) NOT NULL,
     FOREIGN KEY (obra_id) REFERENCES obras(id) ON DELETE CASCADE
 );
-
